@@ -79,11 +79,13 @@ public class UDPReceive {
 				case "close window":
 					receiver.closeWindow();
 					break;
+				//Args can be altered, see below for more info on args
 				case "move circle":
 					receiver.moveMouseCircle(40, 10, 8);
 					break;
+				//Command should be "screenshot <USERNAME>"
 				case "screenshot":
-					receiver.screenCapture();
+					receiver.screenCapture(msg.substring(11);
 					break;
 				case "windows":
 					receiver.windowsButton();
@@ -94,8 +96,6 @@ public class UDPReceive {
 				}
 
 
-
-
 				// Reset the length of the packet before reusing it.
 				packet.setLength(buffer.length);
 			}
@@ -104,13 +104,13 @@ public class UDPReceive {
 		}
 	}
 
-
+	//Presses the "windows" button
 	public void windowsButton(){
 		robot.keyPress(KeyEvent.VK_WINDOWS);
 		robot.keyRelease(KeyEvent.VK_WINDOWS);
 	}
 
-
+	//Closes the current window
 	public void closeWindow(){
 		robot.delay(2000);
 		Point p = MouseInfo.getPointerInfo().getLocation();
@@ -163,18 +163,18 @@ public class UDPReceive {
 		}
 	}
 
-
-	public void screenCapture(){
+	//Takes a screenshot of the computer's current screen status and places it as a .jpg file on the desktop
+	//Argument username is the username in the computer listed under C:/Users/
+	public void screenCapture(String username){
 		// capture the whole screen
 		BufferedImage screencapture = robot.createScreenCapture(
 				new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()) );
-
 		// Save as JPEG
 		int count = 1;
-		File file = new File("c:/Users/IBM_ADMIN/Desktop/screencapture.jpg");
+		File file = new File("C:/Users/"+userName+"/Desktop/screencapture.jpg");
 		while(file.exists()){
 			count++;
-			file = new File("c:/Users/IBM_ADMIN/Desktop/screencapture" + count + ".jpg");
+			file = new File("C:/Users/"+userName+"/Desktop/screencapture" + count + ".jpg");
 		}
 		try {
 			ImageIO.write(screencapture, "jpg", file);
