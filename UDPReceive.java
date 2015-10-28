@@ -183,8 +183,9 @@ public class UDPReceive {
 			e.printStackTrace();
 		}
 	}
-
-
+	
+	//Makes the mouse move in a circle based on the arguments
+	//Args: radius is the radius of the circle, rotations is number of circle rotations, and speed is how fast it goes in a circle
 	//Speed > 10 is barely visible
 	public void moveMouseCircle(int radius,int rotations,int speed){
 		Point p = MouseInfo.getPointerInfo().getLocation();
