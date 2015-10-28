@@ -8,9 +8,9 @@ public class TestSend {
 	public static void main(String[] argv) throws Exception {
 
 		DatagramSocket clientSocket = new DatagramSocket();
-		InetAddress IPAddress = InetAddress.getByName("10.161.4.4");
+		//Replace ENTER IP HERE with the IP that the UDP server is running on
+		InetAddress IPAddress = InetAddress.getByName("ENTER IP HERE");
 		Scanner scanner = new Scanner(System.in);
-		
 		
 
 		String input = "";
