@@ -29,7 +29,6 @@ public class UDPReceive {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -38,6 +37,7 @@ public class UDPReceive {
 	public static void main(String args[]) {
 		UDPReceive receiver = new UDPReceive();
 		try {
+			//Assuming this port isn't already being used
 			int port = 9876;
 
 			// Create a socket to listen on the port.
@@ -66,11 +66,13 @@ public class UDPReceive {
 				//Example: web www.google.com  will open up a google webpage
 				if(msg.contains("web"))
 					receiver.openWebPage(msg.substring(4));
+				//Makes the keyboard type the text that follows after the word "type"
 				if(msg.contains("type"))
 					receiver.typeString(msg.substring(5));
 
 				switch(msg.toLowerCase()){
-				//Exit command to stop receiving UDP packets
+				//Exit command to stop receiving UDP packets. 
+				//NOTE: This server cannot be re-ran from the client if this exit command is called.
 				case "exit":
 					dsocket.close();
 					break;
