@@ -12,7 +12,11 @@ public class TestSend {
 		InetAddress IPAddress = InetAddress.getByName("ENTER IP HERE");
 		Scanner scanner = new Scanner(System.in);
 		
-
+		/*
+		* Client sends commands to the server through sending Strings to the server.
+		* Server has specific commands stored so it processes the commands that it receives and takes appropriate action.
+		*/
+		
 		String input = "";
 		while (!input.equals(":q")) {
 			System.out.print("Command: ");
